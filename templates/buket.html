@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}{{ ad }} için kasımpatı buketi{% endblock %}
+{% block footer %}{% endblock %}
+{% block body %}
+<section class="copy">
+  <h1>Bu buket senin için kodlandı, {{ ad }}.</h1>
+
+  <article class="card">
+    {{ stamp }}
+    <p class="to">Sevgili {{ ad }},</p>
+    <div class="poem">{% for line in note %}<p>{{ line }}</p>{% endfor %}</div>
+    <p class="sign">{{ sign }}</p>
+  </article>
+
+  <div class="actions">
+    <button type="button" class="btn primary" data-copy>Bağlantıyı kopyala</button>
+    <button type="button" class="btn" data-download data-name="{{ file_name }}">Resim olarak indir</button>
+    <a class="btn ghost" href="{{ url_for('index') }}">Başka bir isim dene</a>
+  </div>
+  <p class="status" role="status" aria-live="polite"></p>
+</section>
+
+<section class="bouquet">
+  <div class="glow"></div>
+  {{ svg }}
+</section>
+{% endblock %}

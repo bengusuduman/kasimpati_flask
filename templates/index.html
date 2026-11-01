@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block stage_class %} solo{% endblock %}
+{% block body %}
+<section class="copy">
+  <h1>Adını yaz, sana bir kasımpatı buketi açsın.</h1>
+  <p class="lead">Her isim farklı bir buket çizer. Ne çıkacağı sürpriz.</p>
+
+  <form class="name-form" action="{{ url_for('create') }}" method="get" novalidate>
+    <label for="isim">Adın</label>
+    <div class="row">
+      <input id="isim" name="isim" type="text" value="{{ value }}" maxlength="30"
+             autocomplete="given-name" autofocus required
+             {% if error %}aria-invalid="true" aria-describedby="hata"{% endif %}>
+      <button type="submit" class="btn primary">Buketimi aç</button>
+    </div>
+    {% if error %}<p id="hata" class="error" role="alert">{{ error }}</p>{% endif %}
+  </form>
+</section>
+{% endblock %}
